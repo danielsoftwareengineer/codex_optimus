@@ -35,16 +35,16 @@
  	•	Параметры: palindrome (boolean) — если True, сгенерированная строка будет палиндромом. Если False, строка будет произвольной и не будет палиндромом.
 	
  	•	Пример запроса:
-	{
-		"palindrome": true
-   	}
+		{
+			"palindrome": true
+	   	}
 
 
  	•	Пример ответа:
-   	{
-		"id": "550e8400-e29b-41d4-a716-446655440000",
-		"result": "racecar"
-	}
+	   	{
+			"id": "550e8400-e29b-41d4-a716-446655440000",
+			"result": "racecar"
+		}
 
 2. GET /result/{id}
 
@@ -71,16 +71,23 @@
 ## Структура проекта
 
 Проект включает следующие файлы:
+
 	•	main.py — реализация API на FastAPI.
+ 
 	•	api/palindrome_api.py — класс PalindromeAPI, реализующий Page Object Model для работы с эндпоинтами API.
+ 
 	•	test_main.py — тесты для проверки работы API, использующие PalindromeAPI для взаимодействия с сервером.
+ 
 	•	api/__init__.py — файл инициализации, упрощающий импорт класса PalindromeAPI.
 
 ## Структура Page Object Model
 
 Класс PalindromeAPI в файле api/palindrome_api.py предоставляет методы для работы с эндпоинтами API:
+
 	•	generate_string(palindrome: bool) — отправляет запрос на генерацию строки с параметром palindrome.
+ 
 	•	get_result(string_id: str) — отправляет запрос на получение строки по её id.
+ 
 
 ## Запуск тестов
 
@@ -92,10 +99,15 @@
 ## Описание тестов
 
 Файл test_main.py содержит следующие тесты:
+
 	•	test_generate_palindrome — проверяет генерацию палиндрома (параметр palindrome=True).
+ 
 	•	test_generate_non_palindrome — проверяет генерацию непалиндромной строки (параметр palindrome=False).
+ 
 	•	test_get_result_found — проверяет, что сгенерированная строка успешно возвращается по её id.
+ 
 	•	test_get_result_not_found — проверяет обработку запроса с несуществующим id.
+ 
 
 ## Пример использования Page Object Model в тестах
 
