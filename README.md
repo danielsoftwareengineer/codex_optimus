@@ -34,30 +34,37 @@
 
 	•	Параметры: palindrome (boolean) — если True, сгенерированная строка будет палиндромом. Если False, строка будет произвольной и не будет палиндромом.
 	
-	•	Примеры запроса и ответа:
-	```json
-	{
-	    "palindrome": true
-	}
- 	{
-	    "id": "550e8400-e29b-41d4-a716-446655440000",
-	    "result": "racecar"
-	}
+	•	Пример запроса:
+		```json
+		{
+		    "palindrome": true
+   		}
 
-2. GET /result/{id}
+
+	•	Пример ответа:
+		```json
+   		{
+		    "id": "550e8400-e29b-41d4-a716-446655440000",
+		    "result": "racecar"
+		}
+
+3. GET /result/{id}:
 
 	•	Описание: Возвращает строку по её id.
 	•	Параметры:
 	•	id (UUID) — идентификатор ранее сгенерированной строки.
 	•	Пример запроса:
-	```http
-	GET /result/550e8400-e29b-41d4-a716-446655440000
-	•	Пример ответа:
-	```json
- 	{
-	    "id": "550e8400-e29b-41d4-a716-446655440000",
-	    "result": "racecar"
-	}
+
+		```http
+		GET /result/550e8400-e29b-41d4-a716-446655440000
+
+ 	•	Пример ответа:
+
+	 	```json
+	 	{
+		    "id": "550e8400-e29b-41d4-a716-446655440000",
+		    "result": "racecar"
+		}
 
 # Тестирование 
 
@@ -83,8 +90,8 @@
 
 1.	Убедитесь, что сервер FastAPI запущен по адресу http://127.0.0.1:8000.
 2.	Запустите тесты с помощью команды:
-   ```bash
-   pytest test_main.py
+	   ```bash
+	   pytest test_main.py
 
 ## Описание тестов
 
@@ -99,19 +106,19 @@
 
 В файле test_main.py используется объект PalindromeAPI для выполнения запросов. Пример:
 
-```python
-from api import PalindromeAPI
+	```python
+	from api import PalindromeAPI
+	
+	@pytest.fixture(scope="module")
+	def api_client():
+	    return PalindromeAPI()
+	
+	def test_generate_palindrome(api_client):
+	    response = api_client.generate_string(palindrome=True)
+	    assert "id" in response
+	    assert response["result"] == response["result"][::-1]  # Проверка на палиндром
 
-@pytest.fixture(scope="module")
-def api_client():
-    return PalindromeAPI()
 
-def test_generate_palindrome(api_client):
-    response = api_client.generate_string(palindrome=True)
-    assert "id" in response
-    assert response["result"] == response["result"][::-1]  # Проверка на палиндром
-
-
-# Заключение
+# Тестовое API для генерации строк
 
 Данный проект предоставляет REST API для генерации и получения строк с поддержкой палиндромов. Тесты, написанные с использованием pytest, демонстрируют базовую верификацию работы API, а применение паттерна Page Object Model улучшает читаемость и структуру кода тестов.
