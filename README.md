@@ -48,7 +48,7 @@
 			"result": "racecar"
 		}
 
-3. GET /result/{id}
+2. GET /result/{id}
 
  	•	Описание: Возвращает строку по её id.
 
@@ -74,7 +74,7 @@
 
 Проект включает следующие файлы:
 
-	•	main.py — реализация API на FastAPI.
+ 	•	main.py — реализация API на FastAPI.
  
 	•	api/palindrome_api.py — класс PalindromeAPI, реализующий Page Object Model для работы с эндпоинтами API.
  
